@@ -1,0 +1,6 @@
+SvgIcons/
+build/
+node_modules/
+public/
+src/assets
+src/components/icon/

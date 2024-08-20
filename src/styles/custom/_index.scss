@@ -1,0 +1,321 @@
+//
+// Custom
+//
+
+@use 'sass:map';
+
+.scroll-margin {
+	scroll-margin-top: map.get($header, height) + map.get($subheader, height) +
+		map.get($page, padding-y);
+}
+
+.sticky-top-size {
+	top: map.get($header, height) + map.get($subheader, height) + map.get($page, padding-y);
+}
+
+.border-transparent {
+	--#{$prefix}border-opacity: 0;
+}
+
+.header .logo-img, .mobile-header .logo-img {
+	max-height: 30px !important;
+}
+
+.login-block .logo-img {
+	max-height: 42px !important;
+}
+
+.login-block .form-label,.login-block .invalid-feedback {
+	font-size: 14px !important;
+}
+
+.header-border-bottom {
+	border-bottom: 1px solid var(--main-strokes, rgba(0, 4, 90, 0.10));
+}
+
+.navigation .navigation-link-pill {
+	border-radius: .25rem;
+}
+
+.aside .user-name,
+.navigation .navigation-link{
+	font-size: 14px;
+}
+
+html[theme="dark"] .navigation .navigation-link,
+html[theme="dark"] .navigation .navigation-link:hover,
+html[theme="dark"] .navigation .navigation-link.active{
+	color: rgba(255, 255, 255, 0.90) !important;
+}
+
+html[theme="dark"] .navigation .navigation-link:hover{
+	background-color: rgba(24, 29, 135, 0.60) !important;
+}
+
+html[theme="dark"] .navigation .navigation-link.active{
+	background-color: #181D87 !important;
+}
+
+.subheader-progress-bar {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+}
+
+.data-grid-progress-bar {
+	width: 100%;
+	height: 7px;
+}
+
+.subheader-select-rounded {
+	border-radius: 5px;
+}
+
+.subheader-select-box {
+	border-color: #EDEEF3 !important;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+}
+
+
+.apexcharts-text {
+	font-family: $font-family-base !important;
+}
+
+.swiper-button-prev {
+	left: 0 !important;
+	justify-content: left !important;
+}
+
+.swiper-button-next {
+	right: 0 !important;
+	justify-content: right !important;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+	font-size: 2rem !important;
+}
+
+.bg-gradient-dark-blue {
+	background-image: radial-gradient(50.00% 50.00% at 50.00% 50.00%, #002683 0%, #000615 100%) !important;
+}
+
+.bg-dark-gray {
+	background-color: rgba(255, 255, 255, 0.10) !important;
+}
+
+.bg-middle-gray {
+	background-color: #EDEEF3 !important;
+}
+
+.bg-light-gray {
+	background-color: #f8f9fb !important;
+}
+
+.bg-light-red {
+	background-color: rgba(246, 74, 63, 0.10) !important;
+}
+
+.bg-light-yellow {
+	background-color: rgba(255, 188, 100, 0.10) !important;
+}
+
+.text-light {
+	color: rgba(255, 255, 255, 0.90) !important;
+}
+
+.text-dark {
+	color: #011544 !important;
+}
+
+.text-dark2 {
+	color: #172851 !important;
+}
+
+.hidden-text-when-overflow {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.bg-gradient-red {
+	background: linear-gradient(180deg, #FF2324 0%, #FF6262 100%) !important;
+}
+
+.text-gradient-red {
+	background: -webkit-linear-gradient(180deg, #FF2324 0%, #FF6262 100%) !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+}
+
+.bg-gradient-blue {
+	background: linear-gradient(180deg, #4D75DE 0%, #7B9FFE 100%) !important;
+}
+
+.text-gradient-blue {
+	background: -webkit-linear-gradient(180deg, #4D75DE 0%, #7B9FFE 100%) !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+}
+
+.bg-gradient-yellow {
+	background: linear-gradient(180deg, #FFB321 0%, #FFC75C 100%) !important;
+}
+
+.text-gradient-yellow {
+	background: -webkit-linear-gradient(180deg, #FFB321 0%, #FFC75C 100%) !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+}
+
+.bg-gradient-dark-shadow  {
+	background: linear-gradient(102deg, rgba(80, 99, 145, 0.30) 0%, rgba(48, 67, 112, 0.30) 100%) !important;
+	box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(20px);
+}
+
+.bg-blue-gradient-dark-shadow  {
+	background: linear-gradient(190deg, rgba(48, 55, 126, 0.30) 14.38%, rgba(56, 90, 130, 0.08) 98.13%) !important;
+	box-shadow: 16.21296px 26.7037px 38.14814px 0 rgba(0, 0, 0, 0.50) !important;
+	backdrop-filter: blur(12px);
+}
+
+.bg-white-shadow  {
+	background-color: #ffffff !important;
+	box-shadow: 4px 12px 29px 0 rgba(46, 49, 109, 0.10);
+	backdrop-filter: blur(20px);
+}
+
+.login-block {
+	background: linear-gradient(190deg, rgba(48, 55, 126, 0.30) 14.38%, rgba(56, 90, 130, 0.08) 98.13%) !important;
+	box-shadow: 16.21296px 26.7037px 38.14814px 0 rgba(0, 0, 0, 0.50) !important;
+	backdrop-filter: blur(12px);
+	border-top: 1px solid !important;
+	border-image: linear-gradient(90deg, rgba(168, 169, 175, 0.00) 5%, #D7D7D7 50%, rgba(168, 169, 175, 0.00) 95%) 1 !important;
+}
+
+.dashboard-devices-block {
+	min-width: 200px;
+	min-height: 80px;
+	border-top: 1px solid !important;
+	border-image: linear-gradient(90deg, rgba(168, 169, 175, 0.00) 2%, #D7D7D7 20%, rgba(168, 169, 175, 0.00) 90%) 1 !important;
+}
+
+
+.border-left-gradient-light {
+	border-left: 1px solid !important;
+	border-image: linear-gradient(rgba(168, 169, 175, 0.00) 2%, #D7D7D7 20%, rgba(168, 169, 175, 0.00) 98%) 1 !important;
+}
+
+
+
+.data-grid-block p {
+	margin-bottom: 0;
+	font-size: 14px;
+}
+
+.as-block {
+	min-height: 104px;
+	height: 15vh;
+}
+
+
+.MuiDataGrid-root,
+.MuiTablePagination-input,
+.MuiDataGrid-row button u,
+.MuiInputBase-input {
+	font-size: 14px !important;
+}
+
+.MuiDataGrid-row button u {
+	color: #181D87 !important;
+}
+
+.MuiDataGrid-root,
+.MuiTablePagination-toolbar {
+	color: #011544 !important;
+}
+
+
+.MuiDataGrid-toolbarContainer,
+.MuiDataGrid-footerContainer{
+	background-color: #f8f9fb;
+}
+
+.MuiDataGrid-columnHeaders {
+	min-height: 46px !important;
+	max-height: 46px !important;
+	line-height: 46px !important;
+}
+
+.MuiButton-text {
+	color: #181D87 !important;
+}
+
+.MuiDataGrid-root,
+.MuiDataGrid-row {
+	background-color: #ffffff;
+}
+
+.MuiDataGrid-row:hover {
+	background-color: #e8e9ef33;
+}
+
+.MuiSvgIcon-root,
+.MuiSvgIcon-root:hover{
+	fill: #181D87;
+}
+
+html[theme="dark"] .MuiDataGrid-root,
+html[theme="dark"] .MuiDataGrid-row button u,
+html[theme="dark"] .MuiDataGrid-row--editing input,
+html[theme="dark"] .MuiDataGrid-row--editing .MuiInputBase-input,
+html[theme="dark"] .MuiButton-text,
+html[theme="dark"] .MuiTablePagination-toolbar {
+	color: #ffffff !important;
+}
+
+html[theme="dark"] .MuiDataGrid-root,
+html[theme="dark"] .MuiDataGrid-toolbarContainer,
+html[theme="dark"] .MuiDataGrid-footerContainer,
+html[theme="dark"] .MuiDataGrid-row {
+	background-color: unset !important;
+}
+
+html[theme="dark"] .MuiDataGrid-row:hover {
+	background-color: rgba(24, 29, 135, 0.50) !important;
+}
+
+html[theme="dark"] .MuiDataGrid-columnHeader,
+html[theme="dark"] .MuiDataGrid-row--editing .actions,
+html[theme="dark"] .MuiDataGrid-row--editing .MuiDataGrid-cell,
+html[theme="dark"] .MuiDataGrid-scrollbarFiller{
+	background-color: #011544 !important;
+}
+
+html[theme="dark"] .MuiSvgIcon-root,
+html[theme="dark"] .MuiSvgIcon-root:hover{
+	fill: #ffffff !important;
+}
+
+
+
+.offcanvas {
+	font-size: 14px !important;
+}
+
+.offcanvas.offcanvas-end {
+	width: 500px;
+}
+
+.offcanvas-title {
+	font-size: 24px !important;
+}
+
+.offcanvas-title .alert-status {
+	font-size: 14px !important;
+}
+
+.offcanvas-body .block-title {
+	font-size: 18px !important;
+}

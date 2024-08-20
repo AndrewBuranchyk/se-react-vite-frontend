@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+*.css diff=css
+*.html diff=html
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.md diff=markdown
+*.ts text eol=lf
+*.tsx text eol=lf

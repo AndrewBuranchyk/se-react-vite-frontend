@@ -1,0 +1,31 @@
+#stages:
+#  - test
+#  - build
+#
+#unit-test-linters:
+#  image: node:latest
+#  stage: test
+#  before_script:
+#    - npm install
+#  script:
+#    - npm run lint
+#    - npm run test:ci
+#  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+#  artifacts:
+#    paths:
+#      - coverage/
+#    when: always
+#    reports:
+#      junit:
+#        - junit.xml
+
+#build-deploy:
+#  image: node:latest
+#  stage: build
+#  before_script:
+#    - npm install
+#  script:
+#    - npm run build
+#  artifacts:
+#    paths:
+#      - build/

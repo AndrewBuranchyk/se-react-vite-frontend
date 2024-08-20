@@ -1,0 +1,13 @@
+SvgIcons/
+build/
+node_modules/
+public/
+src/assets
+src/components/icon/
+#src/pages/documentation
+src/styles
+vite.config.mts
+
+amplify-codegen-temp\models
+
+amplify-codegen-temp\models\models
