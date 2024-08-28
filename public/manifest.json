@@ -8,12 +8,12 @@
 			"type": "image/vnd.microsoft.icon"
 		},
 		{
-			"src": "/src/assets/se_logo_header.svg",
+			"src": "../assets/se_logo_header.svg",
 			"type": "image/svg+xml",
 			"sizes": "192x192"
 		},
 		{
-			"src": "/src/assets/se_logo_header.svg",
+			"src": "../assets/se_logo_header.svg",
 			"type": "image/png",
 			"sizes": "512x512"
 		}

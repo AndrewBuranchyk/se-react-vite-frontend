@@ -25,6 +25,26 @@ npm run dev
     Open [http://127.0.0.1:5173](http://127.0.0.1:5173) to view it in the browser.
 
 
+
+## Deployment to AWS Amplify Hosting directly from the GitHub Repository
+    Could be completely free of payment
+### 1. Creating Amplify new app
+    - Sign in using root user email to your https://console.aws.amazon.com/console/home
+    - In the search bar tap "Amplify" and go to Amplify
+    - Click on the "Create new app" button, fill out the form as follows:
+    1. To deploy an app from a Git provider - select "GitHub" and click "Next"
+    2. Install & Authorize on your personal account -  select "All repositories" and click "Install and Authorize"
+    3. Add repository and branch - select "AndrewBuranchyk/se-react-vite-frontend" and click "Next"
+    4. App name - enter "se-react-vite-frontend"
+    5. Frontend build command - enter "npm run build"
+    6. Environment variables - 
+    "Key" enter "BACKEND_BASE_URL"
+    "Value" enter "https://se-laravel-backend.azurewebsites.net/api/"
+    and click "Next"
+    7. Click "Save and deploy"
+    
+
+
 ## Deployment to Azure App Service directly from the Azure Repos
     Could be completely free of payment
 ### 1. Creating Azure App Service
