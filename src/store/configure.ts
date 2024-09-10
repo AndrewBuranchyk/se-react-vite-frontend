@@ -8,6 +8,7 @@ export const store = configureStore({
 		[api.reducerPath]: api.reducer,
 		auth: authReducer,
 	},
+	// @ts-ignore
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
 })
 

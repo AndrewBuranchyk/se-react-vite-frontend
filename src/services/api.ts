@@ -4,7 +4,7 @@ import { RootState } from "../store/configure"
 
 // Create our baseQuery instance
 const baseQuery = fetchBaseQuery({
-	baseUrl: import.meta.env.BACKEND_BASE_URL ?? "https://se-laravel-backend.azurewebsites.net/api/",	//"http://127.0.0.1:8000/api/"
+	baseUrl: import.meta.env.VITE_BACKEND_BASE_URL ?? "http://127.0.0.1:8000/api/",
 	prepareHeaders: (headers, { getState }) => {
 		// By default, if we have a token in the store, let's use that for authenticated requests
 		const { token } = (getState() as RootState).auth
