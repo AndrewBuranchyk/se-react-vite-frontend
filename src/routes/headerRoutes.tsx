@@ -9,6 +9,7 @@ const headers: RouteProps[] = [
 	{ path: authMenu.page404.path, element: <DefaultHeader /> },
 	{ path: siteMenu.home.path, element: <SiteHeader /> },
 	{ path: siteMenu.users.path, element: <SiteHeader /> },
+	{ path: siteMenu.departments.path, element: <SiteHeader /> },
 	{ path: `*`, element: <DefaultHeader /> },
 ]
 

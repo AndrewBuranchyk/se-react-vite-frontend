@@ -1,0 +1,22 @@
+{
+	"Add department": "Add department",
+	"Cancel": "Cancel",
+	"Change density": "Change density",
+	"Delete": "Delete",
+	"Edit": "Edit",
+	"Export data": "Export data",
+	"Name": "Name",
+	"Save": "Save",
+	"Updated at": "Updated at",
+	"Department": "Department",
+	"Departments": "Departments",
+	"Departments data getting error": "Departments data getting error",
+	"Department adding": "Department adding",
+	"Department adding error": "Department adding error",
+	"Department deleting": "Department deleting",
+	"Department deleting error": "Department deleting error",
+	"Department successfully deleted": "Department successfully deleted",
+	"Department updating": "Department updating",
+	"Department updating error": "Department updating error",
+	"Department successfully updated": "Department successfully updated"
+}

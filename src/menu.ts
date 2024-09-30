@@ -11,6 +11,12 @@ export const siteMenu = {
 		path: "users",
 		icon: "People",
 	},
+	departments: {
+		id: "departments",
+		text: "Departments",
+		path: "departments",
+		icon: "OtherHouses",
+	},
 }
 export const authMenu = {
 	auth: {

@@ -8,6 +8,7 @@ const asides: RouteProps[] = [
 	{ path: authMenu.page404.path, element: null },
 	{ path: siteMenu.home.path, element: <DefaultAside /> },
 	{ path: siteMenu.users.path, element: <DefaultAside /> },
+	{ path: siteMenu.departments.path, element: <DefaultAside /> },
 	{ path: "*", element: null },
 ]
 

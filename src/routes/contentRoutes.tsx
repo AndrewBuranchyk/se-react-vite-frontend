@@ -24,6 +24,7 @@ const AUTH = {
 
 const SITE = {
 	USERS: lazy(() => import("../pages/site/UsersPage")),
+	DEPARTMENTS: lazy(() => import("../pages/site/DepartmentsPage")),
 }
 
 const AUTH_PAGES: RouteProps[] = [
@@ -50,6 +51,14 @@ const PAGES: RouteProps[] = [
 		element: (
 			<ProtectedRoute>
 				<SITE.USERS />
+			</ProtectedRoute>
+		),
+	},
+	{
+		path: siteMenu.departments.path,
+		element: (
+			<ProtectedRoute>
+				<SITE.DEPARTMENTS />
 			</ProtectedRoute>
 		),
 	},

@@ -1,8 +1,11 @@
 {
+	"Add user": "Add user",
 	"Admin": "Admin",
 	"Cancel": "Cancel",
 	"Change density": "Change density",
 	"Delete": "Delete",
+	"Department": "Department",
+	"Departments data getting error": "Departments data getting error",
 	"Edit": "Edit",
 	"Email": "Email",
 	"Export data": "Export data",

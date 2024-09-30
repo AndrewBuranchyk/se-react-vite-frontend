@@ -8,34 +8,29 @@ import { siteMenu } from "../../menu"
 import useDarkMode from "../../hooks/useDarkMode"
 import Progress from "../../components/bootstrap/Progress"
 import showNotification from "../../components/extras/showNotification"
-import { useGetUsersQuery } from "../../services/usersApi"
 import { useGetDepartmentsQuery } from "../../services/departmentsApi"
-import UsersDataGrid from "../layout/content/UsersDataGrid"
+import DepartmentsDataGrid from "../layout/content/DepartmentsDataGrid"
 
-const UsersPage = () => {
+const DepartmentsPage = () => {
 	const { darkModeStatus } = useDarkMode()
-	const { data: usersData, isLoading: isUsersLoading, error: getUsersError } = useGetUsersQuery()
-	const { data: departmentsData, isLoading: isDepartmentsLoading, error: getDepartmentsError } = useGetDepartmentsQuery()
-	const { t } = useTranslation("users")
+	const { data, isLoading, error } = useGetDepartmentsQuery()
+	const { t } = useTranslation("departments")
 
 	useLayoutEffect(() => {
-		if (getUsersError) {
-			showNotification(t("Users data getting error"), `${getUsersError}`, "danger", 20000)
+		if (error) {
+			showNotification(t("Departments data getting error"), `${error}`, "danger", 20000)
 		}
-		if (getDepartmentsError) {
-			showNotification(t("Departments data getting error"), `${getDepartmentsError}`, "danger", 20000)
-		}
-	}, [getUsersError, getDepartmentsError, t])
+	}, [error, t])
 
 	return (
-		<PageWrapper title={siteMenu.users.text}>
+		<PageWrapper title={siteMenu.departments.text}>
 			<SubHeader className='bg-transparent shadow-none'>
 				<SubHeaderLeft>
 					<span className={classNames("h2", "mb-0", "ms-2", "fw-medium", { "text-dark": !darkModeStatus })}>
-						{t("Users")}
+						{t("Departments")}
 					</span>
 				</SubHeaderLeft>
-				{(isUsersLoading || isDepartmentsLoading) && (
+				{isLoading && (
 					<div className='subheader-progress-bar'>
 						<Progress
 							value={100}
@@ -54,11 +49,7 @@ const UsersPage = () => {
 				<div className='row'>
 					<div className='col-12'>
 						<div className='d-flex flex-column px-4 pb-2 align-items-center data-grid-block'>
-							{!isUsersLoading && !isDepartmentsLoading
-								&& <UsersDataGrid
-										usersData={usersData ?? []}
-										departmentsData={departmentsData ?? []}
-									/>}
+							{!isLoading && <DepartmentsDataGrid departmentsData={data ?? []} />}
 						</div>
 					</div>
 				</div>
@@ -67,4 +58,4 @@ const UsersPage = () => {
 	)
 }
 
-export default UsersPage
+export default DepartmentsPage

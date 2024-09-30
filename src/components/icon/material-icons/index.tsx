@@ -1065,7 +1065,7 @@ export { default as Notifications } from './Notifications';
 // export { default as OpenInNew } from './OpenInNew';
 // export { default as OpenInNewOff } from './OpenInNewOff';
 // export { default as OpenWith } from './OpenWith';
-// export { default as OtherHouses } from './OtherHouses';
+export { default as OtherHouses } from './OtherHouses';
 // export { default as Outbond } from './Outbond';
 // export { default as Outbound } from './Outbound';
 // export { default as Outbox } from './Outbox';

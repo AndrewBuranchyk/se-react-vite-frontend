@@ -5,6 +5,7 @@
 
 @use 'sass:math';
 @use 'sass:map';
+@use 'sass:color';
 
 //	stylelint-disable no-invalid-position-at-import-rule
 @import 'node_modules/bootstrap/scss/functions';
@@ -427,7 +428,7 @@ $dark-popover-header-bg: tint-color($dark-popover-bg, 5%) !default;
 
 $dark-popover-arrow-color: $dark-popover-bg !default;
 
-$dark-popover-arrow-outer-color: fade-in($dark-popover-arrow-color, 0.05) !default;
+$dark-popover-arrow-outer-color: color.scale($dark-popover-arrow-color, $alpha: 5%) !default;
 
 // Toasts
 $dark-toast-background-color: rgba(shade-color($primary, 95%), 0.85) !default;

@@ -1,4 +1,4 @@
-import React, { FC, useState, useMemo } from "react"
+import React, { FC, useState } from "react"
 import Box from "@mui/material/Box"
 import EditIcon from "@mui/icons-material/Edit"
 import DeleteIcon from "@mui/icons-material/DeleteOutlined"
@@ -32,26 +32,22 @@ import { useTranslation } from "react-i18next"
 import useDarkMode from "../../../hooks/useDarkMode"
 import showNotification from "../../../components/extras/showNotification"
 import GridToolbarAddButton from "../../../components/x-data-grid/GridToolbarAddButton"
-import { useDeleteUserMutation, useUpdateUserMutation, useAddUserMutation } from "../../../services/usersApi"
+import { useDeleteDepartmentMutation, useUpdateDepartmentMutation, useAddDepartmentMutation } from "../../../services/departmentsApi"
 import Progress from "../../../components/bootstrap/Progress"
 
-interface IUsersDataGridProps {
-	usersData: GridRowsProp,
+interface IDepartmentsDataGridProps {
 	departmentsData: GridRowsProp
 }
 
-const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) => {
+const DepartmentsDataGrid: FC<IDepartmentsDataGridProps> = ({ departmentsData }) => {
 	const { darkModeStatus } = useDarkMode()
-	const { t } = useTranslation("users")
-	const departments = useMemo(() => departmentsData.map((department) => {
-		return { value: department.id, label: department.name }
-	}), [departmentsData]);
+	const { t } = useTranslation("departments")
 	const apiRef = useGridApiRef()
-	const [rows, setRows] = useState(usersData)
+	const [rows, setRows] = useState(departmentsData)
 	const [rowModesModel, setRowModesModel] = useState<GridRowModesModel>({})
-	const [deleteUser, { isLoading: isDeleting }] = useDeleteUserMutation()
-	const [updateUser, { isLoading: isUpdating, error: updatingError }] = useUpdateUserMutation()
-	const [addUser, { isLoading: isAdding }] = useAddUserMutation()
+	const [deleteDepartment, { isLoading: isDeleting }] = useDeleteDepartmentMutation()
+	const [updateDepartment, { isLoading: isUpdating, error: updatingError }] = useUpdateDepartmentMutation()
+	const [addDepartment, { isLoading: isAdding }] = useAddDepartmentMutation()
 
 	const handleEditClick = (id: GridRowId) => () => {
 		setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } })
@@ -64,13 +60,13 @@ const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) 
 	const handleDeleteClick = (id: GridRowId) => async () => {
 		if (!isDeleting) {
 			try {
-				const result = await deleteUser(Number(id)).unwrap()
+				const result = await deleteDepartment(Number(id)).unwrap()
 				if (result) {
-					showNotification(t("User deleting"), t("User successfully deleted"), "success", 20000)
+					showNotification(t("Department deleting"), t("Department successfully deleted"), "success", 20000)
 					setRows(rows.filter((row) => row.id !== id))
 				}
 			} catch (err) {
-				showNotification(t("User deleting error"), `${err}`, "danger", 20000)
+				showNotification(t("Department deleting error"), `${err}`, "danger", 20000)
 			}
 		}
 	}
@@ -93,16 +89,11 @@ const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) 
 		if (newRow?.isNew ?? false) {
 			if (!isAdding) {
 				try {
-					const newRowWithAdditionalFields = {
-						...newRow,
-						password: `NewUserPassword${newRow.id}`,
-					}
-					// @ts-ignore
-					const result = await addUser(newRowWithAdditionalFields).unwrap()
+					const result = await addDepartment(newRow).unwrap()
 					if (result?.id) {
 						showNotification(
-							t("User adding"),
-							`User "${result?.name}" successfully added`,
+							t("Department adding"),
+							`Department "${result?.name}" successfully added`,
 							"success",
 							20000,
 						)
@@ -110,18 +101,18 @@ const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) 
 						return { ...result, isNew: true }
 					}
 				} catch (err) {
-					showNotification(t("User adding error"), `${err}`, "danger", 20000)
+					showNotification(t("Department adding error"), `${err}`, "danger", 20000)
 				}
 			}
 		} else if (!isUpdating) {
 			try {
-				const result = await updateUser(newRow).unwrap()
+				const result = await updateDepartment(newRow).unwrap()
 				if (result.id) {
-					showNotification(t("User updating"), t("User successfully updated"), "success", 20000)
+					showNotification(t("Department updating"), t("Department successfully updated"), "success", 20000)
 					return { ...result, isNew: false }
 				}
 			} catch (err) {
-				showNotification(t("User updating error"), `${err}`, "danger", 20000)
+				showNotification(t("Department updating error"), `${err}`, "danger", 20000)
 			}
 		}
 	}
@@ -142,33 +133,6 @@ const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) 
 			headerName: t("Name"),
 			flex: 1,
 			editable: true,
-		},
-		{
-			field: "email",
-			headerName: t("Email"),
-			flex: 1,
-			editable: true,
-		},
-		{
-			field: "department_id",
-			headerName: t("Department"),
-			flex: 1,
-			editable: true,
-			type: "singleSelect",
-			valueOptions: departments,
-		},
-		{
-			field: "role",
-			headerName: t("Role"),
-			flex: 1,
-			editable: true,
-			type: "singleSelect",
-			valueOptions: [
-				{ value: "user", label: t("User") },
-				{ value: "viewOnly", label: t("View Only") },
-				{ value: "usersAdmin", label: t("Users Admin") },
-				{ value: "admin", label: t("Admin") },
-			],
 		},
 		{
 			field: "updated_at",
@@ -288,7 +252,7 @@ const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) 
 									<GridToolbarAddButton
 										setRows={setRows}
 										setRowModesModel={setRowModesModel}
-										buttonTitle={t("Add user")}
+										buttonTitle={t("Add department")}
 										fieldToFocus='name'
 									/>
 								</GridToolbarContainer>
@@ -303,4 +267,4 @@ const UsersDataGrid: FC<IUsersDataGridProps> = ({ usersData, departmentsData }) 
 	)
 }
 
-export default UsersDataGrid
+export default DepartmentsDataGrid

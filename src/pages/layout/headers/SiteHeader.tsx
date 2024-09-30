@@ -24,11 +24,17 @@ const SiteHeader = () => {
 				<div className='d-flex align-items-center'>
 					<Navigation
 						menu={{
-							siteAlerts: {
+							siteUsers: {
 								id: "topMenuUsers",
 								text: "Users",
 								path: siteMenu.users.path,
 								icon: "People",
+							},
+							siteDepartments: {
+								id: "topMenuDepartments",
+								text: "Departments",
+								path: siteMenu.departments.path,
+								icon: "OtherHouses",
 							},
 						}}
 						id='header-top-menu'
