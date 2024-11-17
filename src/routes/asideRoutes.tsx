@@ -9,6 +9,7 @@ const asides: RouteProps[] = [
 	{ path: siteMenu.home.path, element: <DefaultAside /> },
 	{ path: siteMenu.users.path, element: <DefaultAside /> },
 	{ path: siteMenu.departments.path, element: <DefaultAside /> },
+	{ path: siteMenu.logs.path, element: <DefaultAside /> },
 	{ path: "*", element: null },
 ]
 

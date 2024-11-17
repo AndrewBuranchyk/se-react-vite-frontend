@@ -862,7 +862,7 @@ export { default as LightMode } from './LightMode';
 // export { default as LinkedCamera } from './LinkedCamera';
 // export { default as Liquor } from './Liquor';
 // export { default as List } from './List';
-// export { default as ListAlt } from './ListAlt';
+export { default as ListAlt } from './ListAlt';
 // export { default as LiveHelp } from './LiveHelp';
 // export { default as LiveTv } from './LiveTv';
 // export { default as Living } from './Living';

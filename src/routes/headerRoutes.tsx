@@ -10,6 +10,7 @@ const headers: RouteProps[] = [
 	{ path: siteMenu.home.path, element: <SiteHeader /> },
 	{ path: siteMenu.users.path, element: <SiteHeader /> },
 	{ path: siteMenu.departments.path, element: <SiteHeader /> },
+	{ path: siteMenu.logs.path, element: <SiteHeader /> },
 	{ path: `*`, element: <DefaultHeader /> },
 ]
 

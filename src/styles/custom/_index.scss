@@ -266,9 +266,14 @@ html[theme="dark"] .navigation .navigation-link.active{
 	fill: #181D87;
 }
 
+.MuiDataGrid-toolbarQuickFilter input{
+	padding: 5px;
+}
+
 html[theme="dark"] .MuiDataGrid-root,
 html[theme="dark"] .MuiDataGrid-row button u,
 html[theme="dark"] .MuiDataGrid-row--editing input,
+html[theme="dark"] .MuiDataGrid-toolbarQuickFilter input,
 html[theme="dark"] .MuiDataGrid-row--editing .MuiInputBase-input,
 html[theme="dark"] .MuiButton-text,
 html[theme="dark"] .MuiTablePagination-toolbar {
@@ -289,6 +294,7 @@ html[theme="dark"] .MuiDataGrid-row:hover {
 html[theme="dark"] .MuiDataGrid-columnHeader,
 html[theme="dark"] .MuiDataGrid-row--editing .actions,
 html[theme="dark"] .MuiDataGrid-row--editing .MuiDataGrid-cell,
+html[theme="dark"] .MuiDataGrid-toolbarQuickFilter input,
 html[theme="dark"] .MuiDataGrid-scrollbarFiller{
 	background-color: #011544 !important;
 }
@@ -297,7 +303,6 @@ html[theme="dark"] .MuiSvgIcon-root,
 html[theme="dark"] .MuiSvgIcon-root:hover{
 	fill: #ffffff !important;
 }
-
 
 
 .offcanvas {

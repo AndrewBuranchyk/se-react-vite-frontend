@@ -1,3 +1,5 @@
+import { ListAlt } from "./components/icon/material-icons"
+
 export const siteMenu = {
 	home: {
 		id: "home",
@@ -16,6 +18,12 @@ export const siteMenu = {
 		text: "Departments",
 		path: "departments",
 		icon: "OtherHouses",
+	},
+	logs: {
+		id: "logs",
+		text: "Logs",
+		path: "logs",
+		icon: "ListAlt",
 	},
 }
 export const authMenu = {
