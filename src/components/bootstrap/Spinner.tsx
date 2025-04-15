@@ -25,8 +25,9 @@ interface ISpinnerProps {
 	inButton?: boolean | "onlyIcon";
 	className?: string;
 }
+
 const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>(
-	({ tag, color, isGrow, isSmall, size, children, inButton, className, ...props }, ref) => {
+	({ tag = "div", color = null, isGrow = false, isSmall = false, size = null, children = "Loading...", inButton = false, className, ...props }, ref) => {
 		// @ts-ignore
 		const classes = useStyles({ size });
 
@@ -69,16 +70,6 @@ Spinner.propTypes = {
 	// @ts-ignore
 	inButton: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["onlyIcon"])]),
 	className: PropTypes.string,
-};
-Spinner.defaultProps = {
-	children: "Loading...",
-	tag: "div",
-	color: null,
-	isGrow: false,
-	isSmall: false,
-	size: null,
-	inButton: false,
-	className: undefined,
 };
 
 export default Spinner;

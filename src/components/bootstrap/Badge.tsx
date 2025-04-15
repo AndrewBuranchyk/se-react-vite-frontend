@@ -24,13 +24,14 @@ interface IBadgeProps extends Record<string, any> {
 	shadow?: null | 'none' | 'sm' | 'default' | 'lg';
 	isLight?: boolean;
 }
+
 const Badge: FC<IBadgeProps> = ({
 	children,
 	className,
-	color,
-	shadow,
-	rounded,
-	isLight,
+	color = 'primary',
+	shadow = null,
+	rounded = null,
+	isLight = false,
 	...props
 }) => {
 	const { darkModeStatus } = useDarkMode();
@@ -87,13 +88,6 @@ Badge.propTypes = {
 	]),
 	shadow: PropTypes.oneOf([null, 'none', 'sm', 'default', 'lg']),
 	isLight: PropTypes.bool,
-};
-Badge.defaultProps = {
-	className: undefined,
-	color: 'primary',
-	rounded: null,
-	shadow: null,
-	isLight: false,
 };
 
 export default Badge;

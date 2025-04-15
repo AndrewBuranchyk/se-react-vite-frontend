@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, useEffect, useLayoutEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import PageWrapper from "../../layout/PageWrapper/PageWrapper"
@@ -13,7 +13,7 @@ import Spinner from "../../components/bootstrap/Spinner"
 import Alert from "../../components/bootstrap/Alert"
 import { useAppDispatch } from "../../hooks/redux"
 import { useAuth, storeCredentials } from "../../hooks/useAuth"
-import { useLoginMutation } from "../../services/authApi"
+import { useLoginMutation, useGetGoogleRedirectUrlQuery } from "../../services/authApi"
 import { setCredentials } from "../../store/reducers/authSlice"
 
 const Login: FC = () => {
@@ -22,7 +22,8 @@ const Login: FC = () => {
 	const { darkModeStatus, setDarkModeStatus } = useDarkMode()
 	const [validationError, setValidationError] = useState<string>("")
 	const { user } = useAuth()
-	const [login, { isLoading }] = useLoginMutation()
+	const [ login, { isLoading: isLoginLoading }] = useLoginMutation()
+	const { data: googleRedirectUrl, isLoading: isRedirectUrlLoading, error: getRedirectUrlError } = useGetGoogleRedirectUrlQuery()
 
 	useEffect(() => {
 		if (!user) {
@@ -31,6 +32,16 @@ const Login: FC = () => {
 			navigate("/users")
 		}
 	}, [navigate, user, setDarkModeStatus])
+
+	useLayoutEffect(() => {
+		// @ts-ignore
+		setValidationError(getRedirectUrlError?.message ?? getRedirectUrlError?.error ?? JSON.stringify(getRedirectUrlError))
+	}, [getRedirectUrlError])
+
+	const redirectToGoogle = () => {
+		//console.log(googleRedirectUrl?.url ?? '')
+		if (googleRedirectUrl?.url) document.location.replace(googleRedirectUrl?.url)
+	}
 
 	const signInForm = useFormik({
 		enableReinitialize: true,
@@ -102,12 +113,12 @@ const Login: FC = () => {
 										</div>
 									</Alert>
 								)}
-								<form className='row g-4'>
-									<div className='col-12'>
-										<FormGroup id='username' isFloating label='Your email' className=''>
+								<form className="row g-4">
+									<div className="col-12">
+										<FormGroup id="username" isFloating label="Your email" className="">
 											<Input
-												size='lg'
-												autoComplete='username'
+												size="lg"
+												autoComplete="username"
 												value={signInForm.values.username}
 												isTouched={signInForm.touched.username}
 												invalidFeedback={signInForm.errors.username}
@@ -120,16 +131,16 @@ const Login: FC = () => {
 											/>
 										</FormGroup>
 									</div>
-									<div className='col-12'>
-										<FormGroup id='password' isFloating label='Password' className=''>
+									<div className="col-12">
+										<FormGroup id="password" isFloating label="Password" className="">
 											<Input
-												type='password'
-												size='lg'
-												autoComplete='current-password'
+												type="password"
+												size="lg"
+												autoComplete="current-password"
 												value={signInForm.values.password}
 												isTouched={signInForm.touched.password}
 												invalidFeedback={signInForm.errors.password}
-												validFeedback='Looks good!'
+												validFeedback="Looks good!"
 												isValid={signInForm.isValid}
 												onChange={signInForm.handleChange}
 												onBlur={signInForm.handleBlur}
@@ -137,13 +148,29 @@ const Login: FC = () => {
 										</FormGroup>
 									</div>
 
+									<div className="col-12">
+										<Button
+											color="danger"
+											className="w-100 py-3 fs-3 fw-medium"
+											onClick={signInForm.handleSubmit}>
+											{isLoginLoading && <Spinner isSmall inButton isGrow />}
+											Login
+										</Button>
+									</div>
+
+									<div className="col-12 mt-3 text-center text-muted">
+										OR
+									</div>
 									<div className='col-12'>
 										<Button
-											color='danger'
-											className='w-100 py-3 fs-3 fw-medium'
-											onClick={signInForm.handleSubmit}>
-											{isLoading && <Spinner isSmall inButton isGrow />}
-											Login
+											isOutline
+											color='light'
+											size='lg'
+											className="w-100 py-3 fs-3 fw-medium border-light"
+											icon='CustomGoogle'
+											onClick={redirectToGoogle}>
+											{isRedirectUrlLoading && <Spinner isSmall inButton isGrow />}
+											Continue with Google
 										</Button>
 									</div>
 								</form>

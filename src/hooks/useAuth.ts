@@ -6,8 +6,8 @@ import type { LoginResponse } from "../services/authApi"
 
 const getCredentials = (): LoginResponse => {
 	return {
-		token: localStorage.getItem("authToken") ?? "", // sessionStorage
-		user: JSON.parse(localStorage.getItem("authUser") ?? "{}"), // sessionStorage
+		token: sessionStorage.getItem("authToken") ?? "", // sessionStorage / localStorage
+		user: JSON.parse(sessionStorage.getItem("authUser") ?? "{}"), // sessionStorage / localStorage
 	}
 }
 
@@ -26,12 +26,12 @@ export const useAuth = () => {
 }
 
 export const storeCredentials = (auth: LoginResponse) => {
-	localStorage.setItem("authToken", auth.token) // sessionStorage
-	localStorage.setItem("authUser", JSON.stringify(auth.user)) // sessionStorage
+	sessionStorage.setItem("authToken", auth.token) // sessionStorage / localStorage
+	sessionStorage.setItem("authUser", JSON.stringify(auth.user)) // sessionStorage / localStorage
 	return true
 }
 export const clearCredentials = () => {
-	localStorage.removeItem("authToken") // sessionStorage
-	localStorage.removeItem("authUser") // sessionStorage
+	sessionStorage.removeItem("authToken") // sessionStorage / localStorage
+	sessionStorage.removeItem("authUser") // sessionStorage / localStorage
 	return true
 }

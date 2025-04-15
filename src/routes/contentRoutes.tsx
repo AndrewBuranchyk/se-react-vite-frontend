@@ -2,6 +2,7 @@ import React, { FC, lazy, ReactNode } from "react"
 import { RouteProps, Navigate } from "react-router-dom"
 import { siteMenu, authMenu } from "../menu"
 import Login from "../pages/auth/Login"
+import GoogleCallback from "../pages/auth/GoogleCallback"
 import { useAuth } from "../hooks/useAuth"
 
 interface IProtectedRoute {
@@ -36,6 +37,10 @@ const AUTH_PAGES: RouteProps[] = [
 	{
 		path: authMenu.login.path,
 		element: <Login />,
+	},
+	{
+		path: authMenu.googleCallback.path,
+		element: <GoogleCallback />,
 	},
 ]
 const PAGES: RouteProps[] = [

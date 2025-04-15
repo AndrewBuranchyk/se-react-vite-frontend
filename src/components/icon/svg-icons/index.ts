@@ -9,6 +9,7 @@ export { default as CustomAlertTriangle } from './CustomAlertTriangle';
 // export { default as CustomChinaRoundGlowing } from './CustomChinaRoundGlowing';
 // export { default as CustomInverter } from './CustomInverter';
 // export { default as CustomInverters } from './CustomInverters';
+export { default as CustomGoogle } from './CustomGoogle';
 // export { default as CustomHungaryRound } from './CustomHungaryRound';
 // export { default as CustomHungaryRoundGlowing } from './CustomHungaryRoundGlowing';
 // export { default as CustomIsraelRound } from './CustomIsraelRound';

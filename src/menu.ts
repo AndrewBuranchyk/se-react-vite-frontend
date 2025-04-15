@@ -44,4 +44,9 @@ export const authMenu = {
 		path: "/auth-pages/404",
 		icon: "ReportGmailerrorred",
 	},
+	googleCallback: {
+		id: "googleCallback",
+		text: "Login by Google",
+		path: "/auth/google/callback",
+	},
 }

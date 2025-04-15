@@ -1,10 +1,10 @@
 import React, {
 	forwardRef,
 	HTMLAttributeAnchorTarget,
-	HTMLAttributes,
+	HTMLAttributes, JSX,
 	ReactElement,
 	ReactNode,
-} from 'react';
+} from "react"
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
@@ -29,7 +29,7 @@ interface IButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
 	ariaLabel?: string;
 }
 export const ButtonGroup = forwardRef<HTMLDivElement, IButtonGroupProps>(
-	({ children, className, isToolbar, isVertical, size, ariaLabel, ...props }, ref) => {
+	({ children, className, isToolbar = false, isVertical = false, size = null, ariaLabel, ...props }, ref) => {
 		const PREFIX = isToolbar ? 'toolbar' : 'group';
 		return (
 			<div
@@ -60,13 +60,6 @@ ButtonGroup.propTypes = {
 	isVertical: PropTypes.bool,
 	size: PropTypes.oneOf(['sm', 'lg']),
 	ariaLabel: PropTypes.string,
-};
-ButtonGroup.defaultProps = {
-	className: undefined,
-	isToolbar: false,
-	isVertical: false,
-	size: null,
-	ariaLabel: undefined,
 };
 
 export interface IButtonProps
@@ -107,28 +100,29 @@ export interface IButtonProps
 	onClick?(...args: unknown[]): unknown;
 	download?: true;
 }
+
 const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 	(
 		{
 			children,
-			tag,
-			type,
+			tag = 'button',
+			type = 'button',
 			to,
 			href,
-			isActive,
+			isActive = false,
 			color,
-			isOutline,
-			isLight,
-			isLink,
+			isOutline = false,
+			isLight = false,
+			isLink = false,
 			className,
 			icon,
-			rounded,
-			size,
-			isDisable,
-			shadow,
-			hoverShadow,
+			rounded = null,
+			size = null,
+			isDisable = false,
+			shadow = null,
+			hoverShadow = null,
 			target,
-			isVisuallyHidden,
+			isVisuallyHidden = false,
 			...props
 		},
 		ref,
@@ -322,29 +316,6 @@ Button.propTypes = {
 		PropTypes.string,
 	]),
 	isVisuallyHidden: PropTypes.bool,
-};
-Button.defaultProps = {
-	children: null,
-	tag: 'button',
-	type: 'button',
-	to: undefined,
-	href: undefined,
-	isActive: false,
-	color: undefined,
-	isOutline: false,
-	isLight: false,
-	isLink: false,
-	className: undefined,
-	icon: undefined,
-	rounded: null,
-	size: null,
-	isDisable: false,
-	shadow: null,
-	hoverShadow: null,
-	target: undefined,
-	isVisuallyHidden: false,
-	onClick: undefined,
-	download: undefined,
 };
 
 export default Button;

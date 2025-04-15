@@ -25,16 +25,17 @@ interface IProgressProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string
 	isOnlyBar?: boolean
 }
+
 const Progress = forwardRef<HTMLDivElement, IProgressProps>(
 	(
 		{
-			value,
-			min,
-			max,
-			height,
-			isStriped,
-			isAnimated,
-			isAutoColor,
+			value = 0,
+			min = 0,
+			max = 100,
+			height = null,
+			isStriped = false,
+			isAnimated = false,
+			isAutoColor = false,
 			color,
 			children,
 			className,
@@ -129,19 +130,6 @@ Progress.propTypes = {
 	// @ts-ignore
 	children: PropTypes.node,
 	className: PropTypes.string,
-}
-Progress.defaultProps = {
-	value: 0,
-	min: 0,
-	max: 100,
-	height: null,
-	isStriped: false,
-	isAnimated: false,
-	isAutoColor: false,
-	color: undefined,
-	children: undefined,
-	className: undefined,
-	isOnlyBar: undefined,
 }
 
 export default Progress

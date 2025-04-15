@@ -11,7 +11,7 @@ import "./i18n"
 const children = (
 	<Provider store={store}>
 		<ThemeContextProvider>
-			<Router>
+			<Router future={{ v7_startTransition: true }}>
 				<React.StrictMode>
 					<App />
 				</React.StrictMode>

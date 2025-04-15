@@ -26,9 +26,6 @@ NavLinkDropdown.propTypes = {
 	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
 }
-NavLinkDropdown.defaultProps = {
-	className: undefined,
-}
 
 interface INavItemProps extends HTMLAttributes<HTMLLIElement> {
 	children: ReactNode
@@ -37,7 +34,7 @@ interface INavItemProps extends HTMLAttributes<HTMLLIElement> {
 	isDisable?: boolean
 }
 export const NavItem = forwardRef<HTMLLIElement, INavItemProps>(
-	({ children, className, isActive, isDisable, ...props }, ref) => {
+	({ children, className, isActive = false, isDisable = false, ...props }, ref) => {
 		// @ts-ignore
 		if (children.type.displayName === "Dropdown") {
 			// @ts-ignore
@@ -72,11 +69,6 @@ NavItem.propTypes = {
 	isActive: PropTypes.bool,
 	isDisable: PropTypes.bool,
 }
-NavItem.defaultProps = {
-	className: undefined,
-	isActive: false,
-	isDisable: false,
-}
 
 interface INavProps extends HTMLAttributes<HTMLElement> {
 	children: ReactElement<INavItemProps>[] | ReactNode[]
@@ -88,8 +80,9 @@ interface INavProps extends HTMLAttributes<HTMLElement> {
 	isVertical?: boolean
 	verticalBreakpoint?: "sm" | "md" | "lg" | "xl" | "xxl" | null
 }
+
 const Nav = forwardRef<HTMLUListElement, INavProps>(
-	({ tag: Tag, children, className, design, isFill, isJustified, isVertical, verticalBreakpoint, ...props }, ref) => {
+	({ tag: Tag = "ul", children, className, design = "pills", isFill = false, isJustified = false, isVertical = false, verticalBreakpoint, ...props }, ref) => {
 		return (
 			// @ts-ignore
 			<Tag
@@ -125,15 +118,6 @@ Nav.propTypes = {
 	isJustified: PropTypes.bool,
 	isVertical: PropTypes.bool,
 	verticalBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
-}
-Nav.defaultProps = {
-	className: undefined,
-	tag: "ul",
-	design: "pills",
-	isFill: false,
-	isJustified: false,
-	isVertical: false,
-	verticalBreakpoint: null,
 }
 
 export default Nav
